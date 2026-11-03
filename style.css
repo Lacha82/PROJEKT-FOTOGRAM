@@ -1,0 +1,259 @@
+/* ===== Farben und Abstände (Werte aus Figma) ===== */
+
+:root {
+    --color-background: rgba(6, 23, 30, 1);
+    --color-surface: rgba(9, 33, 42, 1);
+    --color-border: rgba(18, 70, 88, 1);
+    --color-border-hover: rgba(107, 193, 225, 1);
+    --color-text: rgba(255, 255, 255, 1);
+    --color-text-light: rgba(245, 245, 245, 1);
+    --color-text-muted: rgba(153, 172, 179, 1);
+    --color-accent-background: rgba(253, 91, 79, 0.1);
+    --color-accent-background-hover: rgba(253, 91, 79, 0.2);
+    --color-backdrop: rgba(0, 0, 0, 0.6);
+    --content-padding: max(calc(50% - 585px), 64px);
+}
+
+/* ===== Schrift Figtree (lokal, je Stärke eine Datei) ===== */
+
+@font-face {
+    font-family: 'Figtree';
+    src: url('./assets/fonts/figtree-v9-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Figtree';
+    src: url('./assets/fonts/figtree-v9-latin-500.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Figtree';
+    src: url('./assets/fonts/figtree-v9-latin-700.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Figtree';
+    src: url('./assets/fonts/figtree-v9-latin-800.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+/* ===== Grundregeln ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Figtree', sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+/* ===== Header ===== */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    padding: 20px var(--content-padding);
+    background-color: var(--color-surface);
+}
+
+.logo {
+    width: 216px;
+    height: 41px;
+}
+
+/* ===== Galerie ===== */
+
+main {
+    padding: 160px var(--content-padding);
+}
+
+h1 {
+    padding-bottom: 80px;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px 16px;
+}
+
+.thumbnail-button {
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.thumbnail {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--color-border);
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.thumbnail:hover {
+    border: 2px solid var(--color-border-hover);
+}
+
+/* ===== Footer ===== */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 48px 32px 32px;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--color-text-muted);
+    background-image: url('./assets/icons/footer-background.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+/* ===== Dialog (Großansicht) ===== */
+
+dialog {
+    padding: 0;
+    border: none;
+    border-radius: 40px;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+}
+
+dialog::backdrop {
+    background-color: var(--color-backdrop);
+}
+
+.dialog-content {
+    padding: 56px 64px;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 48px;
+}
+
+.dialog-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.close-button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.dialog-image {
+    width: 560px;
+    height: 375px;
+    object-fit: cover;
+}
+
+.dialog-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding-top: 48px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+}
+
+.photo-counter {
+    width: 48px;
+    text-align: center;
+}
+
+.arrow-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-accent-background);
+}
+
+.arrow-button:hover {
+    background-color: var(--color-accent-background-hover);
+}
+
+/* ===== Handy (Figma „Mobile_view“ und „Overlay_ mobile“, 375 px) ===== */
+
+@media screen and (max-width: 767px) {
+    .page-header {
+        justify-content: center;
+        padding: 20px 16px;
+    }
+
+    .logo {
+        width: 168px;
+        height: 32px;
+    }
+
+    main {
+        padding: 40px 16px 56px;
+    }
+
+    h1 {
+        padding-bottom: 56px;
+        font-size: 3rem;
+    }
+
+    .gallery {
+        gap: 16px;
+    }
+
+    .thumbnail {
+        width: min(150px, calc(50vw - 24px));
+        height: min(150px, calc(50vw - 24px));
+    }
+
+    dialog {
+        width: min(343px, calc(100% - 32px));
+    }
+
+    .dialog-content {
+        padding: 32px 16px;
+    }
+
+    .dialog-header {
+        height: 106px;
+    }
+
+    .dialog-image {
+        width: 100%;
+        height: min(375px, calc(100dvh - 320px));
+    }
+
+    .dialog-navigation {
+        gap: 56px;
+    }
+}
