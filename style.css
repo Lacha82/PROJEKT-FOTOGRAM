@@ -1,21 +1,3 @@
-/* ===== Farben und Abstände (Werte aus Figma) ===== */
-
-:root {
-    --color-background: rgba(6, 23, 30, 1);
-    --color-surface: rgba(9, 33, 42, 1);
-    --color-border: rgba(18, 70, 88, 1);
-    --color-border-hover: rgba(107, 193, 225, 1);
-    --color-text: rgba(255, 255, 255, 1);
-    --color-text-light: rgba(245, 245, 245, 1);
-    --color-text-muted: rgba(153, 172, 179, 1);
-    --color-accent-background: rgba(253, 91, 79, 0.1);
-    --color-accent-background-hover: rgba(253, 91, 79, 0.2);
-    --color-backdrop: rgba(0, 0, 0, 0.6);
-    --content-padding: max(calc(50% - 585px), 64px);
-}
-
-/* ===== Schrift Figtree (lokal, je Stärke eine Datei) ===== */
-
 @font-face {
     font-family: 'Figtree';
     src: url('./assets/fonts/figtree-v9-latin-regular.woff2') format('woff2');
@@ -44,14 +26,10 @@
     font-display: swap;
 }
 
-/* ===== Grundregeln ===== */
-
 * {
     box-sizing: border-box;
 }
 
-h1,
-h2,
 p {
     margin: 0;
 }
@@ -59,31 +37,27 @@ p {
 body {
     margin: 0;
     font-family: 'Figtree', sans-serif;
-    color: var(--color-text);
-    background-color: var(--color-background);
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(6, 23, 30, 1);
 }
-
-/* ===== Header ===== */
 
 .page-header {
     display: flex;
     align-items: center;
-    padding: 20px var(--content-padding);
-    background-color: var(--color-surface);
+    padding: 20px max(calc(50% - 585px), 64px);
+    background-color: rgba(9, 33, 42, 1);
 }
 
 .logo {
-    width: 216px;
     height: 41px;
 }
 
-/* ===== Galerie ===== */
-
 main {
-    padding: 160px var(--content-padding);
+    padding: 160px max(calc(50% - 585px), 64px) 128px;
 }
 
 h1 {
+    margin: 0;
     padding-bottom: 80px;
     font-size: 3.5rem;
     font-weight: 800;
@@ -94,10 +68,12 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 48px 16px;
+    gap: 16px;
 }
 
 .thumbnail-button {
+    display: flex;
+    margin-bottom: 32px;
     padding: 0;
     border: none;
     border-radius: 16px;
@@ -105,19 +81,16 @@ h1 {
 }
 
 .thumbnail {
-    display: block;
     width: 150px;
     height: 150px;
-    border: 2px solid var(--color-border);
+    border: 2px solid rgba(18, 70, 88, 1);
     border-radius: 16px;
     object-fit: cover;
 }
 
 .thumbnail:hover {
-    border: 2px solid var(--color-border-hover);
+    border: 2px solid rgba(107, 193, 225, 1);
 }
-
-/* ===== Footer ===== */
 
 footer {
     display: flex;
@@ -127,24 +100,23 @@ footer {
     padding: 48px 32px 32px;
     font-size: 1rem;
     text-align: center;
-    color: var(--color-text-muted);
+    color: rgba(153, 172, 179, 1);
     background-image: url('./assets/icons/footer-background.svg');
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
 }
-
-/* ===== Dialog (Großansicht) ===== */
 
 dialog {
     padding: 0;
     border: none;
     border-radius: 40px;
-    color: var(--color-text);
-    background-color: var(--color-surface);
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(9, 33, 42, 1);
 }
 
 dialog::backdrop {
-    background-color: var(--color-backdrop);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .dialog-content {
@@ -159,6 +131,7 @@ dialog::backdrop {
 }
 
 .dialog-header h2 {
+    margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
 }
@@ -182,7 +155,7 @@ dialog::backdrop {
     padding-top: 48px;
     font-size: 1rem;
     font-weight: 500;
-    color: var(--color-text-light);
+    color: rgba(245, 245, 245, 1);
 }
 
 .photo-counter {
@@ -198,14 +171,12 @@ dialog::backdrop {
     height: 60px;
     border: none;
     border-radius: 50%;
-    background-color: var(--color-accent-background);
+    background-color: rgba(253, 91, 79, 0.1);
 }
 
 .arrow-button:hover {
-    background-color: var(--color-accent-background-hover);
+    background-color: rgba(253, 91, 79, 0.2);
 }
-
-/* ===== Handy (Figma „Mobile_view“ und „Overlay_ mobile“, 375 px) ===== */
 
 @media screen and (max-width: 767px) {
     .page-header {
@@ -214,7 +185,6 @@ dialog::backdrop {
     }
 
     .logo {
-        width: 168px;
         height: 32px;
     }
 
@@ -227,13 +197,13 @@ dialog::backdrop {
         font-size: 3rem;
     }
 
-    .gallery {
-        gap: 16px;
+    .thumbnail-button {
+        margin-bottom: 0;
     }
 
     .thumbnail {
-        width: min(150px, calc(50vw - 24px));
-        height: min(150px, calc(50vw - 24px));
+        width: min(150px, calc(50vw - 32px));
+        height: min(150px, calc(50vw - 32px));
     }
 
     dialog {
