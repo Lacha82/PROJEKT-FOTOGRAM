@@ -1,29 +1,45 @@
 // #region Variablen
-/** Ordner, in dem die Fotos liegen (groß für den Dialog, klein für die Galerie). */
+// Ordner, in dem die Fotos liegen (groß für den Dialog, klein für die Galerie).
 const PHOTO_PATH = "./assets/img/";
 const THUMBNAIL_PATH = "./assets/img/thumbnails/";
 
-/** Fotos aus assets/img: Dateiname ohne .jpg (= Titel im Dialog) und alt-Text. */
+// Fotos aus assets/img: Dateiname ohne .jpg (= Titel im Dialog) und alt-Text.
 const PHOTOS = [
-  { name: "alaska", alt: "Snowy mountains and a glacier lake with ice floes in Alaska" },
-  { name: "anime", alt: "Anime-style city street at night with neon lights" },
-  { name: "atmosphere", alt: "Dark storm clouds in a grey sky" },
-  { name: "blue", alt: "Blue tit sitting on a thin branch" },
-  { name: "hurricane", alt: "Hurricane seen from space above the earth" },
-  { name: "lake", alt: "Mountain lake with snowy slopes and pine trees" },
-  { name: "moorente", alt: "Ferruginous duck spreading its wings on the water" },
-  { name: "sea", alt: "Person standing on a rock in the sea at night" },
-  { name: "snow", alt: "Snow bunting sitting on dark rocks" },
-  { name: "snow-leopard", alt: "Two snow leopard cubs on a rock" },
-  { name: "travel", alt: "Snowy mountain peaks under a blue sky" },
-  { name: "winter", alt: "Frosted tree in a snowy landscape" }
+  { name: "lake-alps-sunset", alt: "Lake with the Alps on the horizon at sunset" },
+  { name: "alps-sunset-panorama", alt: "Golden sunset over the Alps behind a forest and houses" },
+  { name: "lake-alps-birds", alt: "Grey lake with birds and snowy Alps in the distance" },
+  { name: "lake-promenade", alt: "Stone lake promenade with autumn trees" },
+  { name: "lake-meadow", alt: "Meadow and trees with a view of the lake under a blue sky" },
+  { name: "ferry-lake", alt: "Ferry on the lake under dramatic clouds" },
+  { name: "konstanz-harbour", alt: "Harbour of Konstanz with the Imperia statue and a boat" },
+  { name: "konstanz-imperia", alt: "Konstanz harbour entrance with the Imperia statue and ships" },
+  { name: "tree-sunrise", alt: "Tree silhouette in front of an orange sunrise" },
+  { name: "sunset-field", alt: "Field with a fence and trees at sunset" },
+  { name: "forest-valley", alt: "Green forest valley with hills under a cloudy sky" },
+  { name: "cloudy-treetops", alt: "Grey clouds over green treetops and houses" },
+  { name: "cloudy-view", alt: "Cloudy sky over trees and a hilly horizon" },
+  { name: "house-blue-sky", alt: "White house with cars under a blue sky with small clouds" },
+  { name: "palace-garden", alt: "Pink baroque palace behind green trees" },
+  { name: "sea-beach", alt: "Man standing in the waves on a sandy beach" },
+  { name: "warsaw-palace-of-culture", alt: "Palace of Culture and Science in Warsaw on a sunny day" },
+  { name: "warsaw-skyscrapers", alt: "Modern skyscrapers in Warsaw behind green trees" },
+  { name: "warsaw-neon-sign", alt: "Colourful neon sign spelling Warszawa at night" },
+  { name: "warsaw-castle-square", alt: "Sigismund's Column and the Royal Castle in Warsaw" },
+  { name: "warsaw-castle-square-dusk", alt: "Castle Square in Warsaw at dusk" },
+  { name: "warsaw-old-town-night", alt: "Warsaw Old Town seen from above at night" },
+  { name: "warsaw-skyline-night", alt: "Warsaw skyline with lit towers at night" },
+  { name: "warsaw-rooftops-night", alt: "Old town rooftops in front of the Warsaw skyline at night" },
+  { name: "warsaw-night-panorama", alt: "Night panorama of Warsaw with a light beam in the sky" },
+  { name: "halloween-house", alt: "House with colourful Halloween decoration at night" },
+  { name: "steak-dinner", alt: "Steak with sauce on a blue plate at a restaurant table" },
+  { name: "campfire", alt: "Campfire burning in the dark" }
 ];
 
 let currentIndex = 0;
 // #endregion
 
 // #region Galerie
-/** Rendert alle Fotos aus PHOTOS als Thumbnails in die Galerie. */
+// Rendert alle Fotos aus PHOTOS als Thumbnails in die Galerie.
 function render() {
   const galleryRef = document.getElementById("gallery");
   galleryRef.innerHTML = "";
@@ -34,40 +50,38 @@ function render() {
 // #endregion
 
 // #region Dialog
-/**
- * Öffnet die Großansicht für ein Foto.
- * @param {number} index - Stelle des Fotos im Array PHOTOS
- */
+// Öffnet die Großansicht für ein Foto.
 function openDialog(index) {
+  const dialogRef = document.getElementById("photoDialog");
   currentIndex = index;
   fillDialog();
-  document.getElementById("photoDialog").showModal();
+  dialogRef.showModal();
 }
 
-/** Schreibt Titel, großes Bild, alt-Text und Zähler des aktuellen Fotos in den Dialog. */
+// Schreibt Titel, großes Bild, alt-Text und Zähler des aktuellen Fotos in den Dialog.
 function fillDialog() {
   const photo = PHOTOS[currentIndex];
+  const titleRef = document.getElementById("dialogTitle");
   const imageRef = document.getElementById("dialogImage");
-  document.getElementById("dialogTitle").innerText = photo.name;
+  const counterRef = document.getElementById("photoCounter");
+  titleRef.innerText = photo.name;
   imageRef.setAttribute("src", PHOTO_PATH + photo.name + ".jpg");
   imageRef.setAttribute("alt", photo.alt);
-  document.getElementById("photoCounter").innerText = `${currentIndex + 1}/${PHOTOS.length}`;
+  counterRef.innerText = `${currentIndex + 1}/${PHOTOS.length}`;
 }
 
-/** Schließt die Großansicht. */
+// Schließt die Großansicht.
 function closeDialog() {
-  document.getElementById("photoDialog").close();
+  const dialogRef = document.getElementById("photoDialog");
+  dialogRef.close();
 }
 
-/**
- * Verhindert, dass ein Klick im Dialog den Dialog schließt.
- * @param {Event} event - Klick-Event
- */
+// Verhindert, dass ein Klick im Dialog den Dialog schließt.
 function stopBubbling(event) {
   event.stopPropagation();
 }
 
-/** Zeigt das nächste Foto, nach dem letzten wieder das erste. */
+// Zeigt das nächste Foto, nach dem letzten wieder das erste.
 function showNextPhoto() {
   currentIndex++;
   if (currentIndex >= PHOTOS.length) {
@@ -76,9 +90,9 @@ function showNextPhoto() {
   fillDialog();
 }
 
-/** Zeigt das vorherige Foto, vor dem ersten wieder das letzte. */
+// Zeigt das vorherige Foto, vor dem ersten wieder das letzte.
 function showPreviousPhoto() {
-  currentIndex--;
+  currentIndex = currentIndex - 1;
   if (currentIndex < 0) {
     currentIndex = PHOTOS.length - 1;
   }
