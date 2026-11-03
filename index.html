@@ -4,49 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fotogram is a personal photo album: browse the gallery, open a photo in a large view and click through all pictures.">
     <title>Fotogram - your personal photo album</title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg">
+    <link rel="icon" href="./assets/icons/favicon.svg">
 </head>
 
 <body>
     <header class="page-header">
-        <img class="logo" src="./assets/icons/logo-fotogram.svg" alt="Fotogram logo" width="216" height="41">
+        <img class="logo" src="./assets/icons/logo-fotogram.svg" alt="Fotogram logo">
     </header>
 
     <main>
         <h1>Your personal photo album</h1>
 
-        <!-- Thumbnails werden von render() in script.js eingefügt -->
         <section id="gallery" class="gallery"></section>
     </main>
 
     <footer>
-        <img src="./assets/icons/logo-developer-akademie.svg" alt="Developer Akademie logo" width="134" height="32">
+        <img src="./assets/icons/logo-developer-akademie.svg" alt="Developer Akademie logo">
         <p>© 2023 Developer Akademie GmbH</p>
     </footer>
 
-    <!-- Großansicht: Klick daneben schließt, Klick im Inhalt nicht (stopBubbling) -->
     <dialog id="photoDialog" aria-labelledby="dialogTitle" onclick="closeDialog()">
         <div class="dialog-content" onclick="stopBubbling(event)">
             <header class="dialog-header">
                 <h2 id="dialogTitle"></h2>
                 <button class="close-button" aria-label="Close photo" onclick="closeDialog()">
-                    <img src="./assets/icons/close.svg" alt="" width="14" height="14">
+                    <img src="./assets/icons/close.svg" alt="">
                 </button>
             </header>
 
-            <img id="dialogImage" class="dialog-image" src="./assets/img/thumbnails/alaska.jpg" alt="" width="560" height="375">
+            <img id="dialogImage" class="dialog-image" src="./assets/img/thumbnails/lake-alps-sunset.jpg" alt="">
 
             <div class="dialog-navigation">
                 <button class="arrow-button" aria-label="Show previous photo" onclick="showPreviousPhoto()">
-                    <img src="./assets/icons/arrow-left.svg" alt="" width="22" height="19">
+                    <img src="./assets/icons/arrow-left.svg" alt="">
                 </button>
                 <span id="photoCounter" class="photo-counter"></span>
                 <button class="arrow-button" aria-label="Show next photo" onclick="showNextPhoto()">
-                    <img src="./assets/icons/arrow-right.svg" alt="" width="22" height="19">
+                    <img src="./assets/icons/arrow-right.svg" alt="">
                 </button>
             </div>
         </div>
