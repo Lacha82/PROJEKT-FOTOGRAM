@@ -54,9 +54,16 @@ function openDialog(index) {
   dialogRef.showModal();
 }
 
-
-
-
+function fillDialog() {
+  const photo = PHOTOS[currentIndex];
+  const titleRef = document.getElementById("dialogTitle");
+  const imageRef = document.getElementById("dialogImage");
+  const counterRef = document.getElementById("photoCounter");
+  titleRef.innerText = photo.name;
+  imageRef.setAttribute("src", PHOTO_PATH + photo.name + ".jpg");
+  imageRef.setAttribute("alt", photo.alt);
+  counterRef.innerText = `${currentIndex + 1}/${PHOTOS.length}`;
+}
 
 function closeDialog() {
   const dialogRef = document.getElementById("photoDialog");
