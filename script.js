@@ -38,8 +38,7 @@ const PHOTOS = [
 let currentIndex = 0;
 // #endregion
 
-// #region Galerie
-// Rendert alle Fotos aus PHOTOS als Thumbnails in die Galerie.
+
 function render() {
   const galleryRef = document.getElementById("gallery");
   galleryRef.innerHTML = "";
