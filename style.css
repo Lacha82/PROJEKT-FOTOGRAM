@@ -178,3 +178,53 @@ dialog::backdrop {
     background-color: rgba(253, 91, 79, 0.2);
 }
 
+@media screen and (max-width: 767px) {
+    .page-header {
+        justify-content: center;
+        padding: 20px 16px;
+    }
+
+    .logo {
+        height: 32px;
+    }
+
+    main {
+        padding: 40px 16px 56px;
+    }
+
+    h1 {
+        padding-bottom: 56px;
+        font-size: 3rem;
+    }
+
+    .thumbnail-button {
+        margin-bottom: 0;
+    }
+
+    .thumbnail {
+        width: min(150px, calc(50vw - 32px));
+        height: min(150px, calc(50vw - 32px));
+    }
+
+    dialog {
+        width: min(343px, calc(100% - 32px));
+    }
+
+    .dialog-content {
+        padding: 32px 16px;
+    }
+
+    .dialog-header {
+        height: 106px;
+    }
+
+    .dialog-image {
+        width: 100%;
+        height: min(375px, calc(100dvh - 320px));
+    }
+
+    .dialog-navigation {
+        gap: 40px;
+    }
+}
+

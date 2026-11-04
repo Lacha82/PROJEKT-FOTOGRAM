@@ -38,7 +38,6 @@ const PHOTOS = [
 let currentIndex = 0;
 // #endregion
 
-
 function render() {
   const galleryRef = document.getElementById("gallery");
   galleryRef.innerHTML = "";
@@ -70,11 +69,9 @@ function closeDialog() {
   dialogRef.close();
 }
 
-
 function stopBubbling(event) {
   event.stopPropagation();
 }
-
 
 function showNextPhoto() {
   currentIndex++;
@@ -84,7 +81,6 @@ function showNextPhoto() {
   fillDialog();
 }
 
-
 function showPreviousPhoto() {
   currentIndex = currentIndex - 1;
   if (currentIndex < 0) {
@@ -93,7 +89,4 @@ function showPreviousPhoto() {
   fillDialog();
 }
 
-
-
 render();
-
