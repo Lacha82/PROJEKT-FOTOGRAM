@@ -36,7 +36,7 @@ const PHOTOS = [
 ];
 
 let currentIndex = 0;
-// #endregion
+
 
 function render() {
   const galleryRef = document.getElementById("gallery");
