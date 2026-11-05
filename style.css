@@ -224,6 +224,7 @@ dialog::backdrop {
     }
 
     .dialog-navigation {
-        gap: 56px;
+        gap: 40px;
     }
 }
+

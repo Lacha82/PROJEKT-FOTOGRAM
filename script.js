@@ -36,10 +36,8 @@ const PHOTOS = [
 ];
 
 let currentIndex = 0;
-// #endregion
 
-// #region Galerie
-// Rendert alle Fotos aus PHOTOS als Thumbnails in die Galerie.
+
 function render() {
   const galleryRef = document.getElementById("gallery");
   galleryRef.innerHTML = "";
@@ -47,10 +45,7 @@ function render() {
     galleryRef.innerHTML += getThumbnailTemplate(index);
   }
 }
-// #endregion
 
-// #region Dialog
-// Öffnet die Großansicht für ein Foto.
 function openDialog(index) {
   const dialogRef = document.getElementById("photoDialog");
   currentIndex = index;
@@ -58,7 +53,6 @@ function openDialog(index) {
   dialogRef.showModal();
 }
 
-// Schreibt Titel, großes Bild, alt-Text und Zähler des aktuellen Fotos in den Dialog.
 function fillDialog() {
   const photo = PHOTOS[currentIndex];
   const titleRef = document.getElementById("dialogTitle");
@@ -70,18 +64,15 @@ function fillDialog() {
   counterRef.innerText = `${currentIndex + 1}/${PHOTOS.length}`;
 }
 
-// Schließt die Großansicht.
 function closeDialog() {
   const dialogRef = document.getElementById("photoDialog");
   dialogRef.close();
 }
 
-// Verhindert, dass ein Klick im Dialog den Dialog schließt.
 function stopBubbling(event) {
   event.stopPropagation();
 }
 
-// Zeigt das nächste Foto, nach dem letzten wieder das erste.
 function showNextPhoto() {
   currentIndex++;
   if (currentIndex >= PHOTOS.length) {
@@ -90,7 +81,6 @@ function showNextPhoto() {
   fillDialog();
 }
 
-// Zeigt das vorherige Foto, vor dem ersten wieder das letzte.
 function showPreviousPhoto() {
   currentIndex = currentIndex - 1;
   if (currentIndex < 0) {
@@ -98,8 +88,5 @@ function showPreviousPhoto() {
   }
   fillDialog();
 }
-// #endregion
 
-// #region Aufruf
 render();
-// #endregion
